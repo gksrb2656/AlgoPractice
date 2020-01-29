@@ -1,3 +1,6 @@
+# import sys
+# sys.stdin = open("sample_input.txt", "r")
+# T = int(input())
 T = int(input())
 # import sys
 # sys.stdin = open("input.txt", "r")
