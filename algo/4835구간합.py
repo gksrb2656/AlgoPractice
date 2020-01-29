@@ -1,6 +1,5 @@
 # import sys
 # sys.stdin = open("sample_input.txt", "r")
-# T = int(input())
 T = int(input())
 for i in range(T):
     N, M = map(int, input().split())
