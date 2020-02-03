@@ -25,3 +25,46 @@ for T in range(10):
 #             break
 #     print(max(Boxes)-min(Boxes))
 
+def min_search():
+    min_Value = 101
+    min_idx = -1
+    for i in range(len(box)):
+        if box[i] < min_Value:
+            min_Value = box[i]
+            min_idx = i
+    return min_idx
+
+def max_search():
+    max_Value = 0
+    max_idx = -1
+    for i in range(len(box)):
+        if box[i] > max_Value:
+            max_Value = box[i]
+            max_idx = i
+    return max_idx
+
+for tc in range(1,11):
+    N = int(input())
+
+    box = list(map(int, input().split()))
+
+    for i in range(N):
+        box[max_search()] -= 1
+        box[min_search()] += 1
+
+    print('#{} {}'.format(tc, box[max_search()]- box[min_search()]))
+
+    #     maxIdx = 0
+    #     maxValue = 0
+    #     minIdx = 0
+    #     minValue = 101
+    #     for j in range(len(box)):
+    #         if box[j] < minValue:
+    #             minValue = box[j]
+    #             minIdx = j
+    #         if box[j] > maxValue:
+    #             maxValue = box[j]
+    #             maxIdx = j
+    #     box[maxIdx] -= 1
+    #     box[minIdx] += 1
+
