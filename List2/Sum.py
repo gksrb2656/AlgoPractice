@@ -1,5 +1,7 @@
 # import sys
 # sys.stdin = open("input.txt", "r")
+from typing import Any, Union
+
 for t in range(10):
     T = int(input())
     li = [list(map(int, input().split())) for i in range(100)]
@@ -28,6 +30,6 @@ for t in range(10):
     for k in s_li:
         if k > M:
             M = k
-     print(M)
+    print(M)
 
 

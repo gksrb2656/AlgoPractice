@@ -1,16 +1,22 @@
+import sys
+sys.stdin = open('input.txt', 'r')
 T = int(input())
-for t in range(1, T+1):
-    N, M = map(int, input().split())
-    li = [list(input()) for i in range(N)]
-    li2 = [[0 for i in range(N)] for j in range(N)]
+for t in range(1,T+1):
+    N, M = map(int,input().split())
+    li = [list(input()) for _ in range(N)]
+    # print(li)
     for i in range(N):
-        for j in range(N):
-            li2[i][j] = li[j][i]
-    if N == M:
-        for k in range(N):
-            if li[k] == li[k].reverse():
-                print(li[k])
-            elif li2[k] == li2[k].reverse():
-                print(li2[k])
-    else:
-        for k in range(N-M-1)
+        r = ''
+        c = ''
+        for j in range(N-M+1):
+            r = ''
+            c = ''
+            for k in range(M):
+                if li[i][k+j] == li[i][M-k+j-1]:
+                    r += li[i][k+j]
+                if li[k+j][i] == li[M-k+j-1][i]:
+                    c += li[k+j][i]
+            if len(r) == M:
+                print('#{} {}'.format(t, r))
+            elif len(c) == M:
+                print('#{} {}'.format(t, c))
