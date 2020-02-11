@@ -92,24 +92,26 @@
 # b=itoa(11117)
 # print(b)
 
-def pattern_matching(t, p):
-    cnt1 = 0
-    for i in range(len(t)-len(p)+1):
-        cnt = 0
-        for j in range(i, len(p)+i):
-            cnt1 += 1
-            if p[j-i] != t[j]:
-                cnt = 0
-                break
-            else:
-                cnt += 1
-            if cnt == len(p):
-                idx = i
-                print('검색성공')
-                print('start_idx:',idx)
-    print(cnt1)
+# def pattern_matching(t, p):
+#     cnt1 = 0
+#     for i in range(len(t)-len(p)+1):
+#         cnt = 0
+#         for j in range(i, len(p)+i):
+#             cnt1 += 1
+#             if p[j-i] != t[j]:
+#                 cnt = 0
+#                 break
+#             else:
+#                 cnt += 1
+#             if cnt == len(p):
+#                 idx = i
+#                 print('검색성공')
+#                 print('start_idx:',idx)
+#     print(cnt1)
+li = [1,2,3,4,5,6,7,8]
+print(li[7:4:-1])
 
-pattern_matching('A pattern matching algorithm', 'rithm')
+# pattern_matching('A pattern matching algorithm', 'rithm')
 
-def boyer(t, p):
+# def boyer(t, p):
 
