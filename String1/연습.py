@@ -108,8 +108,10 @@
 #                 print('검색성공')
 #                 print('start_idx:',idx)
 #     print(cnt1)
-li = [1,2,3,4,5,6,7,8]
-print(li[7:4:-1])
+li = [[1,2,3], [1,2,3], [1,2,3]]
+for i in li:
+    i.insert(1,0)
+print(li)
 
 # pattern_matching('A pattern matching algorithm', 'rithm')
 
