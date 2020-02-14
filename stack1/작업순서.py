@@ -1,40 +1,29 @@
+def DFS(v):
+    visit[v] = True
+    for w in G[v]:
+        if not visit[w]:
+            DFS(w)
 
-for t in range(1,11):
-    print("#{}".format(t), end =' ')
-    visit = []
+    S.append(v)
+
+
+for tc in range(1, 11):
     V, E = map(int, input().split())
-    node = list(map(int, input().split()))
-    arr = []
-    for i in range(E):
-        arr.append(node[i*2:(i+1)*2])
-    s_p = []
-    e_p = []
 
-    for i in range(len(node)):
-        if i%2:
-            e_p.append(node[i])
-        else:
-            s_p.append(node[i])
+    G = [[] for i in range(V + 1)]
+    visit = [False] * (V + 1)
+    indeg = [0] * (V + 1)
+    S = []
 
-    for i in s_p:
-        if e_p.count(i)==0 and i not in visit:
-            visit.append(i)
-            print(i, end =' ')
+    arr = list(map(int, input().split()))
+    for i in range(0, E):
+        u, v = arr[i * 2], arr[i * 2 + 1]
+        G[u].append(v)  # 유향 그래프
+        indeg[v] += 1
 
-    while visit:
-        a = visit.pop(-1)
-        for j in arr:
-            if a == j[0]:
-                if e_p.count(j[1]) == 1:
-                    visit.append(j[1])
-                    print(j[1], end=' ')
-                    e_p.remove(j[1])
-                else:
-                    e_p.remove(j[1])
+    for i in range(1, V + 1):
+        if indeg[i]: continue
+        DFS(i)
 
-
-
-
-
-
-
+    print('#{} '.format(tc), end='')
+    print(*S[::-1])
