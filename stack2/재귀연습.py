@@ -47,16 +47,41 @@
 # subset(0,N)
 # print(P_s)
 
-path = []
-def backtrack(k, n):
-    if n < 0: return
-    if n == 0:
-        print(path)
-    else:
-        path.append('l'); backtrack(k+1, n-1); path.pop()
+# path = []
+# def backtrack(k, n):
+#     if n < 0: return
+#     if n == 0:
+#         print(path)
+#     else:
+#         path.append('l'); backtrack(k+1, n-1); path.pop()
+#
+#         path.append('='); backtrack(k + 1, n-2); path.pop()
+#
+#         path.append('II'); backtrack(k + 1, n - 2); path.pop()
+#
+# backtrack(0, 4)
 
-        path.append('='); backtrack(k + 1, n-2); path.pop()
+combo = []
+def combination(arr, r):
+    # 1.
+    arr = sorted(arr)
 
-        path.append('II'); backtrack(k + 1, n - 2); path.pop()
+    # 2.
+    def generate(chosen):
+        if len(chosen) == r:
+            c = chosen[:]
+            print(c)
+            return combo.append(c)
 
-backtrack(0, 4)
+    	# 3.
+        start = arr.index(chosen[-1]) + 1 if chosen else 0
+        for nxt in range(start, len(arr)):
+            chosen.append(arr[nxt])
+            generate(chosen)
+            chosen.pop()
+    generate([])
+
+combination('ABCDE', 2)
+# combination([1, 2, 3, 4, 5], 3)
+
+print(combo)
