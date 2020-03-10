@@ -58,16 +58,12 @@
 #             print(False,i,j,i&(1<<j))
 
 
-
-N = 6
-K = 1
-selet_row = [0]*N
-for i in range(1 << N):
-    cnt = 0
-    for j in range(N):
-        if i & (1 << j):
-            selet_row[j] = 1
-            cnt +=1
-        if cnt == 3:
-            selet_row = [0] * N
-            break
+arr =[[0]*11 for _ in range(11)]
+r,c = 3,3
+rg = 3
+for i in range(1,11):
+    for j in range(1,11):
+        if abs(r-i)+abs(c-j) <= 3:
+            arr[i][j] += 1
+for jj in arr:
+    print(jj)
