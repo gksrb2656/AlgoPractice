@@ -72,3 +72,8 @@
 #         if S>Max:
 #             Max = S
 #     print("#{} {}".format(t,Max))
+
+from itertools import permutations
+
+for per in permutations(range(1,9)):
+    order = [0]+list(per[:3])+[1]+list(per[3:])
