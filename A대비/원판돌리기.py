@@ -62,5 +62,3 @@ for t in range(T):
     ans = find()
 
 print(ans)
-
-
