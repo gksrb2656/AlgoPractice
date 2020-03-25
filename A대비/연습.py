@@ -73,7 +73,18 @@
 #             Max = S
 #     print("#{} {}".format(t,Max))
 
-from itertools import permutations
+def solution(n, money):
+    ans = 0
 
-for per in permutations(range(1,9)):
-    order = [0]+list(per[:3])+[1]+list(per[3:])
+    def DFS(n2,money,k):
+        nonlocal ans
+        if n2 == 0:
+            ans += 1
+            return
+        for i in range(k,len(money)):
+            if n2-money[i]>=0:
+                DFS(n2-money[i],money,i)
+    DFS(n,money,0)
+    return ans
+
+print(solution(5,[1,2,5]))
