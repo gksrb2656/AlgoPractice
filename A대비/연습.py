@@ -73,18 +73,50 @@
 #             Max = S
 #     print("#{} {}".format(t,Max))
 
-def solution(n, money):
-    ans = 0
+##***kruscal알고리즘***
+# def solution(n, costs):
+#     costs.sort()
+#     connect=[costs[0][0]]
+#     answer = 0
+#     while len(connect)!=n:
+#         temp=1000000000000000
+#         idx=0
+#         for i in range(len(costs)):
+#             if costs[i][0] in connect or costs[i][1] in connect:
+#                 if costs[i][0] in connect and costs[i][1] in connect:
+#                     continue
+#                 if temp > costs[i][2]:
+#                     temp=costs[i][2]
+#                     idx=i
+#         answer+=temp
+#         connect.append(costs[idx][0])
+#         connect.append(costs[idx][1])
+#         connect=list(set(connect))
+#         costs.pop(idx)
+#     return answer
 
-    def DFS(n2,money,k):
-        nonlocal ans
-        if n2 == 0:
-            ans += 1
-            return
-        for i in range(k,len(money)):
-            if n2-money[i]>=0:
-                DFS(n2-money[i],money,i)
-    DFS(n,money,0)
-    return ans
+# def solution(N, number):
+#     S = [0, {N}]
+#     for i in range(2, 9):
+#         case_set = {int(str(N)*i)}
+#         for i_half in range(1, i//2+1):  # S[i_half] S[1]
+#             for x in S[i_half]:
+#                 for y in S[i-i_half]:
+#                     case_set.add(x+y)
+#                     case_set.add(x-y)
+#                     case_set.add(y-x) # y-x 케이스 추가
+#                     case_set.add(x*y)
+#                     if x != 0:
+#                         case_set.add(y//x)
+#                     if y != 0:
+#                         case_set.add(x//y)
+#         if number in case_set:
+#             return i
+#         S.append(case_set)
+#         print(S)
+#     return -1
+#
+#
+# print(solution(5, 12))
 
-print(solution(5,[1,2,5]))
+

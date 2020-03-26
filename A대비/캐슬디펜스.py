@@ -14,7 +14,7 @@ def kill(ar_1,ar_2,ar_3,depth,cnt):
                     if abs(r-i)+abs(c-j)<MIN_d:
                         MIN_d = abs(r - i) + abs(c - j)
                         anemy = (i, j)
-                    if MIN_d == abs(r-i)+abs(c-j):
+                    elif MIN_d == abs(r-i)+abs(c-j):
                         if anemy[1]>j:
                             anemy = (i, j)
             if anemy:
@@ -25,14 +25,12 @@ def kill(ar_1,ar_2,ar_3,depth,cnt):
                 arr_copy[a[0]][a[1]] = 0
         depth+=1
 
-    if depth>N:
-        if cnt>MAX:
-            MAX = cnt
+    if cnt>MAX:
+        MAX = cnt
         return
 
 N, M, D = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
-visit = [[0]*M for _ in range(N)]
 MAX = 0
 for i in range(M):
     for j in range(i+1,M):
