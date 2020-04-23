@@ -1,4 +1,4 @@
-def solution(stones=[6, 4, 5, 4, 2, 1, 4, 2, 5, 1], k=1):
+def solution(stones, k):
     MAX = max(stones)
     ans = MAX
     def binary(st, ed, k):
