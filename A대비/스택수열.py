@@ -32,21 +32,21 @@
 #
 # stack_number()
 
-n = int(input())
-arr = [int(input()) for _ in range(n)]
-ans = [0]*(2*n)
-stack = []
-idx = 0
-idx_ans = 0
-for i in range(n):
-    stack.append(i+1)
-    ans[idx_ans] = '+'
-    idx_ans += 1
-    while stack and idx<n and arr[idx]==stack[-1]:
-        ans[idx_ans] = '-'
-        stack.pop()
-        idx_ans += 1
-        idx+=1
-if ans.count(0):print('NO')
-else:
-    print('\n'.join(ans))
+# n = int(input())
+# arr = [int(input()) for _ in range(n)]
+# ans = [0]*(2*n)
+# stack = []
+# idx = 0
+# idx_ans = 0
+# for i in range(n):
+#     stack.append(i+1)
+#     ans[idx_ans] = '+'
+#     idx_ans += 1
+#     while stack and idx<n and arr[idx]==stack[-1]:
+#         ans[idx_ans] = '-'
+#         stack.pop()
+#         idx_ans += 1
+#         idx+=1
+# if ans.count(0):print('NO')
+# else:
+#     print('\n'.join(ans))

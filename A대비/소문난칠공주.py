@@ -43,14 +43,16 @@
 #                 visit[r - 1][c] = 1
 #                 DFS(r,c,y_cnt+1,cnt+1,path+[(r-1,c)])
 #                 visit[r - 1][c] = 0
+
 from collections import deque
 
 dr=[1,0,-1,0]
 dc=[0,1,0,-1]
 
 def combo(com,n,y_cnt,cnt):
+    global ans
     if cnt == 7:
-        combos.append(com)
+        ans += BFS(com)
     for i in range(n,25):
         r,c = i//5,i%5
         if class_room[r][c]=='Y':
@@ -59,7 +61,8 @@ def combo(com,n,y_cnt,cnt):
         else:
             combo(com+[(r,c)],i+1,y_cnt,cnt+1)
 
-def BFS():
+def BFS(path):
+    Q=deque()
     visit = [path[0]]
     Q.append(path[0])
     while Q:
@@ -78,11 +81,7 @@ def BFS():
         return 0
 
 class_room = [list(input()) for _ in range(5)]
-combos = []
 ans = 0
 paths = []
 combo([],0,0,0)
-for path in combos:
-    Q = deque()
-    if BFS():ans+=1;paths.append(path)
 print(ans)
