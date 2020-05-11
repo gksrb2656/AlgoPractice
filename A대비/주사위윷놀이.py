@@ -105,16 +105,13 @@
 #         return
 #
 #     for i in range(1,5):
-#
-
-
 
 dice = list(map(int, input().split()))
-board = [[i for i in range(0,41,2)]+[0],
-        [13,16,19],
-        [22,24],
-        [25,30,35],
-        [28,27,26]]
+board = [[i for i in range(0,41,2)]+[0], #normal
+        [13,16,19], #10
+        [22,24], #20
+        [25,30,35], #25
+        [28,27,26]] #30
 
 visit = [[0]*22,[0]*3,[0]*2,[0]*3,[0]*3]
 charic = [[0,0]*4] # index, node
