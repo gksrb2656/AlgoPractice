@@ -38,4 +38,3 @@ for i in range(9):
             blank.append((i,j))
 flag = 0
 possible(0)
-

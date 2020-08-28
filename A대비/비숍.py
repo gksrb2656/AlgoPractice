@@ -42,53 +42,86 @@
 # print(answer)
 # print(cnt)
 #
+#
+# def bishop(n, depth, possible, total):
+#     global ans,cnt
+#     cnt += 1
+#     if total - n - 1 <= ans - depth:
+#         return
+#
+#     for i in range(n, total):
+#         r, c = possible[i]
+#         if R_visit[r - c] or L_visit[r + c]: continue
+#         R_visit[r - c] = 1
+#         L_visit[r + c] = 1
+#         bishop(i + 1, depth + 1, possible, total)
+#         R_visit[r - c] = 0
+#         L_visit[r + c] = 0
+#     ans = max(ans, depth)
+#
+#
+# N = int(input())
+# arr = [list(map(int, input().split())) for _ in range(N)]
+# cnt = 0
+# odd_possible = []
+# even_possible = []
+# sum_ans = 0
+# even_total = 0
+# odd_total = 0
+# for i in range(N):
+#     for j in range(N):
+#         if arr[i][j]:
+#             if i % 2 and j % 2:
+#                 odd_possible.append((i, j))
+#                 odd_total += 1
+#             elif not i % 2 and not j % 2:
+#                 odd_possible.append((i, j))
+#                 odd_total += 1
+#             else:
+#                 even_possible.append((i, j))
+#                 even_total += 1
+#
+# R_visit = [0] * (2 * N)
+# L_visit = [0] * (2 * N)
+# ans = 0
+# cnt = 0
+# bishop(0, 0, even_possible, even_total)
+# sum_ans += ans
+# ans = 0
+# bishop(0, 0, odd_possible, odd_total)
+# sum_ans += ans
+# print(sum_ans)
+# print(cnt)
 
-def bishop(n, depth, possible, total):
-    global ans,cnt
-    cnt += 1
-    if total - n - 1 <= ans - depth:
-        return
+import sys
+from collections import defaultdict as dd
+input = sys.stdin.readline
 
-    for i in range(n, total):
-        r, c = possible[i]
-        if R_visit[r - c] or L_visit[r + c]: continue
-        R_visit[r - c] = 1
-        L_visit[r + c] = 1
-        bishop(i + 1, depth + 1, possible, total)
-        R_visit[r - c] = 0
-        L_visit[r + c] = 0
-    ans = max(ans, depth)
+n = int(input())
+m = 2*n-1
+
+path = dd(set)
+
+for i in range(n):
+    for j, a in enumerate(map(int, input().split())):
+        if a:
+            path[i+j].add(i-j)
+
+def match(i):
+    if i == -1:
+        return 1
+    for j in path[i]:
+        if not check[j]:
+            check[j] = True
+            if match(partner[j]):
+                partner[j] = i
+                return 1
+    return 0
 
 
-N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N)]
-cnt = 0
-odd_possible = []
-even_possible = []
-sum_ans = 0
-even_total = 0
-odd_total = 0
-for i in range(N):
-    for j in range(N):
-        if arr[i][j]:
-            if i % 2 and j % 2:
-                odd_possible.append((i, j))
-                odd_total += 1
-            elif not i % 2 and not j % 2:
-                odd_possible.append((i, j))
-                odd_total += 1
-            else:
-                even_possible.append((i, j))
-                even_total += 1
-
-R_visit = [0] * (2 * N)
-L_visit = [0] * (2 * N)
-ans = 0
-cnt = 0
-bishop(0, 0, even_possible, even_total)
-sum_ans += ans
-ans = 0
-bishop(0, 0, odd_possible, odd_total)
-sum_ans += ans
-print(sum_ans)
-print(cnt)
+partner = [-1] * m
+s = 0
+for k in path.keys():
+    check = [False] * m
+    s += match(k)
+print(s)

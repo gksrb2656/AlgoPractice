@@ -7,7 +7,7 @@ dp = [0]*N
 
 for i in range(N):
     if i == 0:
-        dp[0]=wine[0]
+        dp[0]=wine[0]a
     elif i == 1:
         dp[1] = wine[0]+wine[1]
     else:
